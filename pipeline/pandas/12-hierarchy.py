@@ -12,5 +12,5 @@ def hierarchy(df1, df2):
     df1 = df1[(df1.index >= low) & (df1.index <= high)]
     df2 = df2[(df2.index >= low) & (df2.index <= high)]
     df = pd.concat([df2, df1], keys=["bitstamp", "coinbase"])
-    df = df.swaplevel(0, 1).sort_index(level=0)
+    df = df.swaplevel(0, 1).sort_index()
     return df
