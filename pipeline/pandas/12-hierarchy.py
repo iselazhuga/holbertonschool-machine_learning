@@ -5,7 +5,7 @@ index = __import__('10-index').index
 
 
 def hierarchy(df1, df2):
-    """Concatenates bitstamp and coinbase rows in a 1417411980-1417417980 window"""
+    """Concatenates bitstamp and coinbase rows in a time window"""
     df1 = index(df1)
     df2 = index(df2)
     low, high = 1417411980, 1417417980
