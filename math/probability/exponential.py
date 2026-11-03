@@ -5,6 +5,8 @@
 class Exponential:
     """Represent an exponential distribution."""
 
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """Initialize the distribution from data or from a given lambtha.
 
@@ -23,3 +25,12 @@ class Exponential:
             for x in data:
                 total += x
             self.lambtha = float(len(data) / total)
+
+    def pdf(self, x):
+        """Return the density of the distribution at time x.
+
+        A negative x gives 0.
+        """
+        if x < 0:
+            return 0
+        return self.lambtha * self.e ** (-self.lambtha * x)
