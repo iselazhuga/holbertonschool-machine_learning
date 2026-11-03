@@ -46,3 +46,13 @@ class Normal:
         coefficient = 1 / (self.stddev * (2 * self.pi) ** 0.5)
         exponent = -0.5 * ((x - self.mean) / self.stddev) ** 2
         return coefficient * self.e ** exponent
+
+    def erf(self, v):
+        """Return the error function of v, from its Taylor series."""
+        series = v - v ** 3 / 3 + v ** 5 / 10 - v ** 7 / 42 + v ** 9 / 216
+        return (2 / self.pi ** 0.5) * series
+
+    def cdf(self, x):
+        """Return the probability that a value is at most x."""
+        v = (x - self.mean) / (self.stddev * 2 ** 0.5)
+        return 0.5 * (1 + self.erf(v))
