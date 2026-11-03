@@ -29,3 +29,11 @@ class Normal:
             for x in data:
                 squares += (x - self.mean) ** 2
             self.stddev = float((squares / len(data)) ** 0.5)
+
+    def z_score(self, x):
+        """Return how many standard deviations x is from the mean."""
+        return (x - self.mean) / self.stddev
+
+    def x_value(self, z):
+        """Return the value that is z standard deviations from the mean."""
+        return self.mean + z * self.stddev
