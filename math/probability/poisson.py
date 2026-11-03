@@ -35,3 +35,17 @@ class Poisson:
         for i in range(1, k + 1):
             factorial *= i
         return (self.e ** -self.lambtha) * (self.lambtha ** k) / factorial
+
+    def cdf(self, k):
+        """Return the probability of at most k successes.
+
+        Adds the PMF of 0, 1, ..., k. k is turned into an integer;
+        a negative k gives 0.
+        """
+        k = int(k)
+        if k < 0:
+            return 0
+        total = 0
+        for i in range(k + 1):
+            total += self.pmf(i)
+        return total
