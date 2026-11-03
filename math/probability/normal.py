@@ -5,6 +5,9 @@
 class Normal:
     """Represent a normal distribution."""
 
+    e = 2.7182818285
+    pi = 3.1415926536
+
     def __init__(self, data=None, mean=0., stddev=1.):
         """Initialize the distribution from data or from mean and stddev.
 
@@ -37,3 +40,9 @@ class Normal:
     def x_value(self, z):
         """Return the value that is z standard deviations from the mean."""
         return self.mean + z * self.stddev
+
+    def pdf(self, x):
+        """Return the height of the bell curve at x."""
+        coefficient = 1 / (self.stddev * (2 * self.pi) ** 0.5)
+        exponent = -0.5 * ((x - self.mean) / self.stddev) ** 2
+        return coefficient * self.e ** exponent
