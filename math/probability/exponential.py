@@ -34,3 +34,12 @@ class Exponential:
         if x < 0:
             return 0
         return self.lambtha * self.e ** (-self.lambtha * x)
+
+    def cdf(self, x):
+        """Return the probability that the event happens within time x.
+
+        A negative x gives 0.
+        """
+        if x < 0:
+            return 0
+        return 1 - self.e ** (-self.lambtha * x)
